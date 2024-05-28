@@ -1,0 +1,91 @@
+import pandas as pd
+
+data1 = {
+    'Make': ['Honda'],
+    'Model': ['All Models'],
+    'Vendor Code': ['NACH'],
+    'Vendor Name': ['NACHMAN INTERNATIONAL CO. LTD'],
+    'Vendor Notes': ['REF#: 42-1015'],
+    
+    'Classification': ['Lower'],
+    
+    'Product Type': ['Ball Joints'],
+        
+    'MPN': ['AT-04024'],
+    
+    'SKU': ['125411'],
+    
+}
+
+list_models = [
+    
+'TRX420FA Rancher AT',
+'TRX420FA2 FourTrax Rancher 4x4 Auto DCT with EPS',
+'TRX420FA1 FourTrax Rancher 4x4 Auto DCT',
+'TRX420FA5 FourTrax Rancher 4x4 Auto DCT IRS',
+'TRX420FA6 FourTrax Rancher 4x4 Auto DCT IRS EPS',
+'TRX420FE FourTrax Rancher 4X4 ES',
+'TRX420FE1 FourTrax Rancher 4x4 ES',
+'TRX420FM FourTrax Rancher 4X4',
+'TRX420FM1 FourTrax Rancher 4x4',
+'TRX420FM2 FourTrax Rancher 4x4 with EPS',
+'TRX420FPA Rancher AT 4x4 w/ Power Steering',
+'TRX420FPE Rancher ES 4x4 w/ Power Steering',
+'TRX420FPM Rancher 4x4 w/ Power Steering',
+'TRX420TE FourTrax Rancher ES',
+'TRX420TM FourTrax Rancher',
+'TRX420TM1 FourTrax Rancher',
+'TRX420TE1 FourTrax Rancher ES',
+'TRX450FE FourTrax Foreman ES',
+'TRX450FM FourTrax Foreman S',
+'TRX500FA FourTrax Foreman Rubicon',
+'TRX500FGA FourTrax Foreman Rubicon GPScape',
+'TRX500FE FourTrax Foreman 4x4 ES',
+'TRX500FM FourTrax Foreman 4x4',
+'TRX500FPE FourTrax Foreman 4x4 ES w/Power Steering',
+'TRX500FPM FourTrax Foreman 4x4 w/ Power Steering',
+'TRX500TM FourTrax Foreman',
+'TRX500FPA FourTrax Foreman Rubicon with EPS',
+'TRX500FM1 FourTrax Foreman 4x4',
+'TRX500FE1 FourTrax Foreman 4x4 ES',
+'TRX500FM2 FourTrax Foreman 4x4 with EPS',
+'TRX500FE2 FourTrax Foreman 4x4 ES with EPS',
+'TRX500FM5 FourTrax Foreman Rubicon',
+'TRX500FM6 FourTrax Foreman Rubicon EPS',
+'TRX500FM6D FourTrax Foreman Rubicon EPS DLX',
+'TRX500FA5 FourTrax Foreman Rubicon Auto DCT',
+'TRX500FA6 FourTrax Foreman Rubicon Auto DCT EPS',
+'TRX500FA6D FourTrax Foreman Rubicon Auto DCT EPS D',
+'TRX500FA7 FourTrax Foreman Rubicon Auto DCT EPS DL',
+'TRX500FM7 FourTrax Foreman Rubicon EPS DLX',
+'TRX520FM1 FourTrax Foreman 4x4',
+'TRX520FM2 FourTrax Foreman 4x4 EPS',
+'TRX520FE2 FourTrax Foreman 4x4 ES EPS',
+'TRX520FM6 FourTrax Foreman Rubicon EPS',
+'TRX520FA5 FourTrax Foreman Rubicon Auto DCT',
+'TRX520FA6 FourTrax Foreman Rubicon Auto DCT EPS',
+'TRX520FA7 FourTrax Foreman Rubicon Auto DCT EPS DL',
+'TRX650FA FourTrax Rincon',
+'TRX650FGA FourTrax Rincon GPScape',
+'TRX680FA FourTrax Rincon',
+'TRX680FGA FourTrax Rincon GPScape',
+]
+
+years = list(range(1998,2025))
+
+def generate_df(model, data, year):
+    data_copy = data.copy()
+    data_copy['Model'] = model
+    data_copy['Year'] = year
+    return pd.DataFrame(data_copy)
+
+dfs=[]
+for year in years:
+    df1 = pd.concat([ generate_df(model, data1, year) for model in list_models], ignore_index = True)
+    dfs.append(df1)
+        
+
+final_df = pd.concat(dfs, ignore_index = True)
+
+final_df
+    
