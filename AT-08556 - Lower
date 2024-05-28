@@ -1,0 +1,57 @@
+import pandas as pd
+
+data1 = {
+    'Make': ['Suzuki'],
+    'Model': ['All Models'],
+    'Vendor Code': ['NACH'],
+    'Vendor Name': ['NACHMAN INTERNATIONAL CO. LTD'],
+    'Vendor Notes': ['REF#: 42-1022'],
+    
+    'Classification': ['Lower'],
+    
+    'Product Type': ['Ball Joints'],
+        
+    'MPN': ['AT-08556'],
+    
+    'SKU': ['125415'],
+    
+}
+
+list_models = [
+    
+'LT230E QuadRunner',
+'LT230GE',
+'LT230S QuadSport',
+'LT250EF',
+'LT250R QuadRacer',
+'LT250S',
+'LT300E',
+'LT-4WD QuadRunner 250',
+'LT-4WDX King Quad 250',
+'LT50 QuadRunner',
+'LT500R QuadRacer',
+'LT-F500F QuadRunner 4x4'
+
+
+
+
+]
+
+years = list(range(1985,2003))
+
+def generate_df(model, data, year):
+    data_copy = data.copy()
+    data_copy['Model'] = model
+    data_copy['Year'] = year
+    return pd.DataFrame(data_copy)
+
+dfs=[]
+for year in years:
+    df1 = pd.concat([ generate_df(model, data1, year) for model in list_models], ignore_index = True)
+    dfs.append(df1)
+        
+
+final_df = pd.concat(dfs, ignore_index = True)
+
+final_df
+    
