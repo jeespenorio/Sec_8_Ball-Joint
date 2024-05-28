@@ -1,0 +1,72 @@
+import pandas as pd
+
+data1 = {
+    'Make': ['Kymco'],
+    'Model': ['All Models'],
+    'Vendor Code': ['NACH'],
+    'Vendor Name': ['NACHMAN INTERNATIONAL CO. LTD'],
+    'Vendor Notes': ['REF#: 53410-PRB1-900'],
+    
+    'Classification': ['Lower'],
+    
+    'Product Type': ['Ball Joints'],
+        
+    'MPN': ['AT-08580'],
+    
+    'SKU': ['125418'],
+    
+}
+
+list_models = [
+    
+'MXU375 IRS',
+'MXU375 IRS LE',
+'MXU375 4x4 IRS',
+'UXV 500 4X4',
+'UXV 500 4X4 LE',
+'UXV 500 4X4 SE',
+'UXV 500i SE',
+'UXV 500i 4X4',
+'UXV 500i LE',
+'UXV 500i SP',
+'UXV 500i HE',
+'UXV 500i TURF',
+'UXV 500',
+'UXV 500i',
+'UXV 500i Camo',
+'UXV 500i LE 50th Anniversary',
+'UXV 500i G',
+'UXV 500i G Turf',
+'UXV 700i',
+'UXV 700i HE',
+'UXV 700i TURF',
+'UXV 700i LE',
+'UXV 700i SP',
+'UXV 700i Camo',
+'UXV 700i LE 50th Anniversary',
+'UXV 700i LE EPS',
+'UXV 700i LE EPS Camo',
+'UXV 700i LE Prime',
+'UXV 700i LE Hunter'
+
+
+]
+
+years = list(range(1996,2025))
+
+def generate_df(model, data, year):
+    data_copy = data.copy()
+    data_copy['Model'] = model
+    data_copy['Year'] = year
+    return pd.DataFrame(data_copy)
+
+dfs=[]
+for year in years:
+    df1 = pd.concat([ generate_df(model, data1, year) for model in list_models], ignore_index = True)
+    dfs.append(df1)
+        
+
+final_df = pd.concat(dfs, ignore_index = True)
+
+final_df
+    
