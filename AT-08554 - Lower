@@ -1,0 +1,46 @@
+import pandas as pd
+
+data1 = {
+    'Make': ['Polaris'],
+    'Model': ['All Models'],
+    'Vendor Code': ['NACH'],
+    'Vendor Name': ['NACHMAN INTERNATIONAL CO. LTD'],
+    'Vendor Notes': ['REF#: 42-1030'],
+    
+    'Classification': ['Lower'],
+    
+    'Product Type': ['Ball Joints'],
+        
+    'MPN': ['AT-08554'],
+    
+    'SKU': ['125414'],
+    
+}
+
+list_models = [
+    
+'Big Boss 250 4x6',
+
+
+
+
+]
+
+years = list(range(1988,2024))
+
+def generate_df(model, data, year):
+    data_copy = data.copy()
+    data_copy['Model'] = model
+    data_copy['Year'] = year
+    return pd.DataFrame(data_copy)
+
+dfs=[]
+for year in years:
+    df1 = pd.concat([ generate_df(model, data1, year) for model in list_models], ignore_index = True)
+    dfs.append(df1)
+        
+
+final_df = pd.concat(dfs, ignore_index = True)
+
+final_df
+    
