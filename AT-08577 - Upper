@@ -1,0 +1,121 @@
+import pandas as pd
+
+data1 = {
+    'Make': ['Kawasaki'],
+    'Model': ['All Models'],
+    'Vendor Code': ['NACH'],
+    'Vendor Name': ['NACHMAN INTERNATIONAL CO. LTD'],
+    'Vendor Notes': ['REF#: 7081867, 7081992,7082275, 7082422,7082487'],
+    
+    'Classification': ['Upper'],
+    
+    'Product Type': ['Ball Joints'],
+        
+    'MPN': ['AT-08577'],
+    
+    'SKU': ['125417'],
+    
+}
+
+list_models = [
+    
+'General XP 1000 Deluxe',
+'General XP 1000 Deluxe Ride Command Edition',
+'General XP 4 1000 Deluxe',
+'Ranger 1000',
+'Ranger 1000 EPS',
+'Ranger 1000 Premium',
+'Ranger 1000 Premium + Winter Prep Package',
+'Ranger XP 1000 EPS Northstar HVAC Edition',
+'Ranger XP 1000 EPS High Lifter Edition',
+'Ranger XP 1000 EPS Ranch Edition',
+'Ranger XP 1000 EPS Hunter Edition',
+'Ranger XP 1000 EPS',
+'Ranger XP 1000',
+'Ranger XP 1000 EPS Premium',
+'Ranger XP 1000 EPS 20th Anniversary',
+'Ranger XP 1000 Premium',
+'Ranger XP 1000 NorthStar Edition',
+'Ranger XP 1000 High Lifter Edition',
+'Ranger XP 1000 Texas Edition',
+'Ranger XP 1000 NorthStar Premium',
+'Ranger XP 1000 NorthStar Edition Trail Boss',
+'Ranger XP 1000 NorthStar Ultimate',
+'Ranger XP 1000 Trail Boss',
+'Ranger XP 1000 Waterfowl Edition',
+'Ranger XP 1000 Big Game Edition',
+'RZR XP 1000 EPS LE',
+'RZR XP 4 1000 EPS',
+'RZR XP 1000 EPS',
+'RZR XP 1000 EPS High Lifter Edition',
+'RZR XP 1000 EPS Desert Edition',
+'RZR XP 1000 EPS Fox Edition',
+'RZR XP Turbo EPS',
+'RZR XP 4 Turbo EPS',
+'RZR XP 4 1000 EPS High Lifter Edition',
+'RZR XP 1000 EPS Velocity Blue LE',
+'RZR XP 1000 EPS Gold Matte Metallic LE',
+'RZR XP Turbo EPS Fox Edition',
+'RZR XP Turbo EPS DYNAMIX Edition',
+'RZR XP 4 Turbo EPS Fox Edition',
+'RZR XP 1000 EPS Ride Command Edition',
+'RZR XP 1000 EPS Trails and Rock Edition',
+'RZR XP 4 1000 EPS Ride Command Edition',
+'RZR XP 4 Turbo EPS DYNAMIX Edition',
+'RZR XP Turbo S',
+'RZR XP 1000 EPS DYNAMIX Edition',
+'RZR XP Turbo EPS LE',
+'RZR XP 4 1000 EPS Dynamix Edition',
+'RZR XP 4 Turbo EPS LE',
+'RZR XP 4 Turbo S',
+'RZR XP 1000',
+'RZR XP 1000 Premium',
+'RZR XP 1000 Limited Edition',
+'RZR XP 4 1000',
+'RZR XP 4 1000 Premium',
+'RZR XP 4 1000 Limited Edition',
+'RZR XP Turbo',
+'RZR XP 4 Turbo',
+'RZR XP 4 Turbo S Velocity',
+'RZR XP Turbo S Velocity',
+'RZR XP 1000 Trails & Rocks',
+'RZR XP 1000 High Lifter',
+'RZR XP 4 1000 High Lifter',
+'RZR XP 1000 Sport',
+'RZR XP 4 1000 Sport',
+'RZR PRO XP',
+'RZR PRO XP Premium',
+'RZR PRO XP Ultimate',
+'RZR PRO XP 4',
+'RZR PRO XP 4 Premium',
+'RZR PRO XP 4 Ultimate',
+'RZR PRO XP Orange Madness LE',
+'RZR PRO XP 4 Orange Madness LE',
+'RZR PRO XP Sport',
+'RZR PRO XP 4 Sport',
+'RZR Pro XP 4 Ultimate Rockford Fosgate LE',
+'RZR Pro XP Ultimate Rockford Fosgate LE'
+
+
+
+
+]
+
+years = list(range(2014,2024))
+
+def generate_df(model, data, year):
+    data_copy = data.copy()
+    data_copy['Model'] = model
+    data_copy['Year'] = year
+    return pd.DataFrame(data_copy)
+
+dfs=[]
+for year in years:
+    df1 = pd.concat([ generate_df(model, data1, year) for model in list_models], ignore_index = True)
+    dfs.append(df1)
+        
+
+final_df = pd.concat(dfs, ignore_index = True)
+
+final_df
+    
